@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Text;
 using System.Threading.Tasks;
 using carritOSCore.Model.Context;
 using carritOSCore.Model.Entities;
@@ -13,11 +14,12 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
+using Microsoft.IdentityModel.Tokens;
 /**
- * --
- * @author Juan Diego Alosilla
- * @email diegoalosillagmail.com
- */
+* --
+* @author Juan Diego Alosilla
+* @email diegoalosillagmail.com
+*/
 namespace carritOSCore
 {
     public class Startup
@@ -40,7 +42,19 @@ namespace carritOSCore
                 .AddDefaultTokenProviders();
 
             services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
-                .AddJwtBearer();
+                .AddJwtBearer(options =>
+                 options.TokenValidationParameters = new TokenValidationParameters
+                 {
+                     ValidateIssuer = true,
+                     ValidateAudience = true,
+                     ValidateLifetime = true,
+                     ValidateIssuerSigningKey = true,
+                     ValidIssuer = "alosilla.com",
+                     ValidAudience = "alosilla.com",
+                     IssuerSigningKey = new SymmetricSecurityKey(
+                    Encoding.UTF8.GetBytes(Configuration["Alosilla"])),
+                     ClockSkew = TimeSpan.Zero
+                 });
 
 
             services.AddMvc();
