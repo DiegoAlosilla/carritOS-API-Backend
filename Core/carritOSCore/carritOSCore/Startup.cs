@@ -13,7 +13,11 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
-
+/**
+ * --
+ * @author Juan Diego Alosilla
+ * @email diegoalosillagmail.com
+ */
 namespace carritOSCore
 {
     public class Startup
