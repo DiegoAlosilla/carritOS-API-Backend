@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using carritOSCore.Model.Context;
 using carritOSCore.Model.Entities;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Identity;
@@ -34,6 +35,9 @@ namespace carritOSCore
                 .AddEntityFrameworkStores<ApplicationDbContext>()
                 .AddDefaultTokenProviders();
 
+            services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
+                .AddJwtBearer();
+
 
             services.AddMvc();
         }
@@ -46,6 +50,7 @@ namespace carritOSCore
                 app.UseDeveloperExceptionPage();
             }
 
+            app.UseAuthentication();
             app.UseMvc();
 
             if (!context.BusinessOwners.Any())
