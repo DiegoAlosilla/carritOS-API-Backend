@@ -5,7 +5,10 @@ VisualStudioVersion = 15.0.27428.2005
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "carritOSCore", "carritOSCore\carritOSCore.csproj", "{B4EFC3BA-09BA-4729-AD6C-D7E3CCCD60D2}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "XUnitTestCarritOS", "XUnitTestCarritOS\XUnitTestCarritOS.csproj", "{54747A6B-EB01-470D-8FEF-10E6A38F767B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "XUnitTestCarritOS", "XUnitTestCarritOS\XUnitTestCarritOS.csproj", "{54747A6B-EB01-470D-8FEF-10E6A38F767B}"
+	ProjectSection(ProjectDependencies) = postProject
+		{B4EFC3BA-09BA-4729-AD6C-D7E3CCCD60D2} = {B4EFC3BA-09BA-4729-AD6C-D7E3CCCD60D2}
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
