@@ -35,7 +35,7 @@ namespace carritOSCore
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddDbContext<ApplicationDbContext>(options =>
-            options.UseSqlServer(Configuration.GetConnectionString("defaultConnections")));
+            options.UseSqlServer("Data Source =.; Initial Catalog = carritOSDataBase; Integrated Security = True"));
 
             services.AddIdentity<AplicationUser, IdentityRole>()
                 .AddEntityFrameworkStores<ApplicationDbContext>()

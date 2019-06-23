@@ -8,9 +8,14 @@ using System;
 using System.Net;
 using System.Threading.Tasks;
 using Xunit;
-
+/**
+* https://www.youtube.com/watch?v=p5l7x_pFjmI&t=40s
+* @author Juan Diego Alosilla
+* @email diegoalosillagmail.com
+*/
 namespace XIntegrationTest
 {
+
     public class IntegrationTest
     {
         
@@ -19,7 +24,7 @@ namespace XIntegrationTest
         {
             var client = new TestClientProvider().Client;
 
-            var response = await client.GetAsync("/api/BusinessOwner");
+            var response = await client.GetAsync("api/BusinessOwner");
 
             response.EnsureSuccessStatusCode();
 
