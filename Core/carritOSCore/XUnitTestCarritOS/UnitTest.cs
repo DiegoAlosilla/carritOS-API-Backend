@@ -2,7 +2,6 @@ using carritOSCore.Model.RepositoryImpl;
 using carritOSCore.Model.Context;
 using carritOSCore.Model.Entities;
 using carritOSCore.Model.Repository;
-using carritOSCore.Model.RepositoryImpl;
 using Moq;
 using System;
 using System.Collections.Generic;
