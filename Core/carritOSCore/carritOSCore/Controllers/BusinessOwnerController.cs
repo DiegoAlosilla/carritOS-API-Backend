@@ -5,6 +5,7 @@ using carritOSCore.Model.ServiceImpl;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -31,13 +32,15 @@ namespace carritOSCore.Controllers
         }
 
         [HttpGet]
+  
         public IEnumerable<BusinessOwner> Get()
         {
             var BusinessOwner = BusinessOwnerService.FindAll();
             return BusinessOwner.ToList();
         }
 
-        [HttpGet("{id}", Name = "create BusinessOwner")]
+        [HttpGet]
+        [Route("Get/{id}")]
         public IActionResult GetById(int id)
         {
 
@@ -52,18 +55,20 @@ namespace carritOSCore.Controllers
         }
 
         [HttpPost]
+        [Route("Create")]
         public IActionResult Post([FromBody] BusinessOwner BusinessOwner)
         {
             if (ModelState.IsValid)
             {
                 BusinessOwnerService.Save(BusinessOwner);
-                return new CreatedAtRouteResult("create BusinessOwner", new { id = BusinessOwner.Id });
+                return Ok(new CreatedAtRouteResult("create BusinessOwner", new { id = BusinessOwner.Id }, BusinessOwner));
             }
             return BadRequest(ModelState);
         }
 
 
-        [HttpPut("{id}")]
+        [HttpPut]
+        [Route("update/{id}")]
         public IActionResult Put([FromBody] BusinessOwner BusinessOwner, int id)
         {
             if (BusinessOwner.Id != id)
@@ -76,7 +81,8 @@ namespace carritOSCore.Controllers
         }
 
 
-        [HttpDelete("{id}")]
+        [HttpDelete]
+        [Route("Delete/{id}")]
         public IActionResult Delete(int id)
         {
             var BusinessOwner = BusinessOwnerService.FindById(id);

@@ -25,7 +25,7 @@ namespace carritOSCore.Model.ServiceImpl
 
         public bool Delete(BusinessOwner t)
         {
-            throw new NotImplementedException();
+            return BusinessOwnerRepository.Delete(t);
         }
 
         public List<BusinessOwner> FindAll()
@@ -40,12 +40,12 @@ namespace carritOSCore.Model.ServiceImpl
 
         public bool Save(BusinessOwner t)
         {
-            throw new NotImplementedException();
+            return BusinessOwnerRepository.Save(t);
         }
 
         public bool Update(BusinessOwner t)
         {
-            throw new NotImplementedException();
+            return BusinessOwnerRepository.Update(t);
         }
     }
 }

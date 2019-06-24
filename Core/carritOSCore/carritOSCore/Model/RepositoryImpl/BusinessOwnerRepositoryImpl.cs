@@ -51,7 +51,7 @@ namespace carritOSCore.Model.RepositoryImpl
         {
             try
             {
-                context.Entry(t).State = EntityState.Added;
+                context.BusinessOwners.Add(t);
                 context.SaveChanges();
             }
             catch (Exception)
