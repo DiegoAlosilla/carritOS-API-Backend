@@ -12,7 +12,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "XUnitTestCarritOS", "XUnitT
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "XIntegrationTest", "XIntegrationTest\XIntegrationTest.csproj", "{AA3BAB9A-CEB7-4BFC-8E20-681F33FE97B2}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "carritOS-UI", "carritOS-UI\carritOS-UI.csproj", "{38F71084-BD1B-4A98-A715-CAD409A7B29A}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "carritOSUI", "carritOS-UI\carritOSUI.csproj", "{38F71084-BD1B-4A98-A715-CAD409A7B29A}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
