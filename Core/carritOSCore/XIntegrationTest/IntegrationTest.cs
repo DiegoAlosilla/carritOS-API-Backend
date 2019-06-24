@@ -26,7 +26,7 @@ namespace XIntegrationTest
 
     public class IntegrationTest
     {
-        String Token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1bmlxdWVfbmFtZSI6ImRpZWdvYWxvc2lsbGFiY0BtZ2FpbC5jb20iLCJBbG9zaWxsYSI6Ikp1YW4gRGllZ28iLCJqdGkiOiIzNmE5OGFmMC00NWQ5LTQwYmItODFiNS1mYzRmZmVhYzFjODYiLCJleHAiOjE1NjEzMzUxNzIsImlzcyI6ImFsb3NpbGxhLmNvbSIsImF1ZCI6ImFsb3NpbGxhLmNvbSJ9.7Iyn7JehQPkd0oTi86OWfDwfNqyzLrCyZevIIIa5j4o";
+        //String Token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1bmlxdWVfbmFtZSI6ImRpZWdvYWxvc2lsbGFiY0BtZ2FpbC5jb20iLCJBbG9zaWxsYSI6Ikp1YW4gRGllZ28iLCJqdGkiOiIzNmE5OGFmMC00NWQ5LTQwYmItODFiNS1mYzRmZmVhYzFjODYiLCJleHAiOjE1NjEzMzUxNzIsImlzcyI6ImFsb3NpbGxhLmNvbSIsImF1ZCI6ImFsb3NpbGxhLmNvbSJ9.7Iyn7JehQPkd0oTi86OWfDwfNqyzLrCyZevIIIa5j4o";
 
         [Fact]
         public async Task Test_Post()
@@ -59,7 +59,7 @@ namespace XIntegrationTest
             using (var client = new TestClientProvider().Client)
             {
                 
-                client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue( "Bearer", Token);
+                //client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue( "Bearer", Token);
                 var response = await client.GetAsync("api/BusinessOwner");
                 response.EnsureSuccessStatusCode();
                 response.StatusCode.Should().Be(HttpStatusCode.OK);
@@ -98,7 +98,7 @@ namespace XIntegrationTest
         {
             using (var client = new TestClientProvider().Client)
             {
-                var response = await client.DeleteAsync("api/BusinessOwner/delete/27");
+                var response = await client.DeleteAsync("api/BusinessOwner/delete/34");
 
                 response.EnsureSuccessStatusCode();
                 response.StatusCode.Should().Be(HttpStatusCode.OK);

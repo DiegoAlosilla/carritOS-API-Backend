@@ -20,7 +20,7 @@ namespace carritOSCore.Controllers
 {
     [Produces("application/json")]
     [Route("api/BusinessOwner")]
-    [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
+    //[Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
     public class BusinessOwnerController : Controller
     {
         private readonly ApplicationDbContext context;
