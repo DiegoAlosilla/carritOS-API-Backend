@@ -93,7 +93,7 @@ namespace carritOSCore.Controllers
             }
 
             BusinessOwnerService.Delete(BusinessOwner);
-            return Ok(BusinessOwner);
+            return Ok();
         }
 
     }

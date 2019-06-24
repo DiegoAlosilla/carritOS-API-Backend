@@ -46,6 +46,60 @@ namespace WebCarritOS.Controllers
             return View(businessOwner);
         }
 
+        public IActionResult Create()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public IActionResult Create(BusinessOwner businessOwner)
+        {
+
+            HttpClient client = _api.Initial();
+            var postTask = client.PostAsJsonAsync<BusinessOwner>("api/BusinessOwner/Create", businessOwner);
+            postTask.Wait();
+            var result = postTask.Result;
+
+            if (result.IsSuccessStatusCode)
+            {
+                return RedirectToAction("Index");
+            }
+            return View();
+        }
+
+
+        public async Task<IActionResult> Delete(int? Id)
+        {
+
+            if (Id == null)
+            {
+                return NotFound();
+            }
+
+            var businessOwner = new BusinessOwner();
+            HttpClient client = _api.Initial();
+            HttpResponseMessage response = await client.GetAsync($"api/BusinessOwner/Get/{Id}");
+
+
+            if (response.IsSuccessStatusCode)
+            {
+                var result = response.Content.ReadAsStringAsync().Result;
+                businessOwner = JsonConvert.DeserializeObject<BusinessOwner>(result);
+            }
+
+            if (businessOwner == null)
+            {
+                return NotFound();
+            }
+
+
+            return View(businessOwner);
+        }
+
+
+
+
+
 
     }
 }

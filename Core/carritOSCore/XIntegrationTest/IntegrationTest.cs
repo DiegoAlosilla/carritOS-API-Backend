@@ -98,7 +98,7 @@ namespace XIntegrationTest
         {
             using (var client = new TestClientProvider().Client)
             {
-                var response = await client.DeleteAsync("api/BusinessOwner/delete/34");
+                var response = await client.DeleteAsync("api/BusinessOwner/delete/11");
 
                 response.EnsureSuccessStatusCode();
                 response.StatusCode.Should().Be(HttpStatusCode.OK);
