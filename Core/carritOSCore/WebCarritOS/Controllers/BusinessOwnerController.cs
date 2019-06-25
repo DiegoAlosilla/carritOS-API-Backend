@@ -96,10 +96,61 @@ namespace WebCarritOS.Controllers
             return View(businessOwner);
         }
 
+        [HttpPost]
+        public async Task<IActionResult> Delete(int Id)
+        {
+            HttpClient client = _api.Initial();
+            HttpResponseMessage response = await client.DeleteAsync($"api/BusinessOwner/delete/{Id}");
+
+            return RedirectToAction("Index");
+        }
 
 
+        public async Task<IActionResult> Edit(int? Id)
+        {
+
+            if (Id == null)
+            {
+                return NotFound();
+            }
+
+            var businessOwner = new BusinessOwner();
+            HttpClient client = _api.Initial();
+            HttpResponseMessage response = await client.GetAsync($"api/BusinessOwner/Get/{Id}");
 
 
+            if (response.IsSuccessStatusCode)
+            {
+                var result = response.Content.ReadAsStringAsync().Result;
+                businessOwner = JsonConvert.DeserializeObject<BusinessOwner>(result);
+            }
+
+            if (businessOwner == null)
+            {
+                return NotFound();
+            }
+
+
+            return View(businessOwner);
+        }
+
+        [HttpPost]
+        public IActionResult Edit(int Id, BusinessOwner businessOwner)
+        {
+            
+            HttpClient client = _api.Initial();
+                      
+            var putTask = client.PutAsJsonAsync<BusinessOwner>($"api/BusinessOwner/update/{Id}", businessOwner);
+            putTask.Wait();
+
+            var result = putTask.Result;
+
+            if (result.IsSuccessStatusCode)
+            {
+                return RedirectToAction("Index");
+            }
+            return View();
+        }
 
     }
 }

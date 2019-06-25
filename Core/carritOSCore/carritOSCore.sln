@@ -12,7 +12,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "XUnitTestCarritOS", "XUnitT
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "XIntegrationTest", "XIntegrationTest\XIntegrationTest.csproj", "{AA3BAB9A-CEB7-4BFC-8E20-681F33FE97B2}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebCarritOS", "WebCarritOS\WebCarritOS.csproj", "{46F42B8C-E327-48C5-913A-BC01DA7FF463}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WebCarritOS", "WebCarritOS\WebCarritOS.csproj", "{46F42B8C-E327-48C5-913A-BC01DA7FF463}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "XSeleniumTest", "SeleniumTest\XSeleniumTest.csproj", "{C1F07F55-A7CF-4F1B-97CA-D2A271C80105}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -36,6 +38,10 @@ Global
 		{46F42B8C-E327-48C5-913A-BC01DA7FF463}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{46F42B8C-E327-48C5-913A-BC01DA7FF463}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{46F42B8C-E327-48C5-913A-BC01DA7FF463}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C1F07F55-A7CF-4F1B-97CA-D2A271C80105}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C1F07F55-A7CF-4F1B-97CA-D2A271C80105}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C1F07F55-A7CF-4F1B-97CA-D2A271C80105}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C1F07F55-A7CF-4F1B-97CA-D2A271C80105}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

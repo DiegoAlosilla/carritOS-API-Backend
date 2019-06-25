@@ -82,8 +82,8 @@ namespace carritOSCore.Controllers
 
 
         [HttpDelete]
-        [Route("Delete/{id}")]
-        public IActionResult Delete(int id)
+        [Route("delete/{id}")]
+        public IActionResult DeleteBusinessOwner(int id)
         {
             var BusinessOwner = BusinessOwnerService.FindById(id);
 
