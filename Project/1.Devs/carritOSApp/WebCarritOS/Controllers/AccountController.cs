@@ -8,20 +8,28 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using WebCarritOS.API;
 using WebCarritOS.Models;
-
+using Microsoft.AspNetCore.Identity;
 /**
  * --
  * @author Dash Tennynson
  * @email rojas71421@gmail.com
  * Referencia de los otros Controladores
+ * logout: https://www.youtube.com/watch?v=YLAHIZmO2PI 
  */
 
 namespace WebCarritOS.Controllers
 {
     public class AccountController : Controller
     {
+        //private readonly UserManager<IdentityUser> userManager;
+        //private readonly SignInManager<IdentityUser> signInManager;
+
         carritOSAPI _api = new carritOSAPI();
 
+        //public AccountController(UserManager<IdentityUser> userManager, SignInManager<IdentityUser> signInManager) {
+        //    this.userManager = userManager;
+        //    this.signInManager = signInManager;
+        //}
         public IActionResult Index()
         {
             return View();
@@ -71,10 +79,11 @@ namespace WebCarritOS.Controllers
             return View(userInfo);
         }
 
-        [HttpPost]
-        public IActionResult Logout()
-        {
-            return View();
-        }
+        //[HttpPost]
+        //public async Task<IActionResult> Logout()
+        //{
+        //    await signInManager.SignOutAsync();
+        //    return RedirectToAction("LoginApp", "Account");
+        //}
     }
 }

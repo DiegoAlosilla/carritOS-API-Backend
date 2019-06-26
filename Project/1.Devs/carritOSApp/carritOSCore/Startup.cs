@@ -37,24 +37,31 @@ namespace carritOSCore
             services.AddDbContext<ApplicationDbContext>(options =>
             options.UseSqlServer("Data Source =DASHT\\SQLEXPRESS; Initial Catalog = carritOSDataBase; Integrated Security = True"));
 
-            services.AddIdentity<AplicationUser, IdentityRole>()
-                .AddEntityFrameworkStores<ApplicationDbContext>()
-                .AddDefaultTokenProviders();
+            //services.AddIdentity<AplicationUser, IdentityRole>()
+            //    .AddEntityFrameworkStores<ApplicationDbContext>()
+            //    .AddDefaultTokenProviders();
 
-            services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
-                .AddJwtBearer(options =>
-                 options.TokenValidationParameters = new TokenValidationParameters
-                 {
-                     ValidateIssuer = true,
-                     ValidateAudience = true,
-                     ValidateLifetime = true,
-                     ValidateIssuerSigningKey = true,
-                     ValidIssuer = "alosilla.com",
-                     ValidAudience = "alosilla.com",
-                     IssuerSigningKey = new SymmetricSecurityKey(
-                    Encoding.UTF8.GetBytes(Configuration["Alosilla"])),
-                     ClockSkew = TimeSpan.Zero
-                 });
+            services.AddIdentity<AplicationUser, IdentityRole>(config=> {
+                config.SignIn.RequireConfirmedEmail = true;
+            })
+            .AddEntityFrameworkStores<ApplicationDbContext>()
+            .AddDefaultTokenProviders();
+
+
+            //services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
+            //    .AddJwtBearer(options =>
+            //     options.TokenValidationParameters = new TokenValidationParameters
+            //     {
+            //         ValidateIssuer = true,
+            //         ValidateAudience = true,
+            //         ValidateLifetime = true,
+            //         ValidateIssuerSigningKey = true,
+            //         ValidIssuer = "alosilla.com",
+            //         ValidAudience = "alosilla.com",
+            //         IssuerSigningKey = new SymmetricSecurityKey(
+            //        Encoding.UTF8.GetBytes(Configuration["Alosilla"])),
+            //         ClockSkew = TimeSpan.Zero
+            //     });
 
 
             services.AddMvc();

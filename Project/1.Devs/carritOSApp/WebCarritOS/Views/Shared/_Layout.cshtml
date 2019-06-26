@@ -1,4 +1,11 @@
-﻿<!DOCTYPE html>
+﻿
+@using Microsoft.AspNetCore.Identity;
+@inject SignInManager<IdentityUser> signInManager
+@*@inject Microsoft.AspNetCore.Identity.SignInManager<> signInManager*@
+@*@inject Microsoft.AspNetCore.Identity.SignInManager<Is>*@
+
+@inject Microsoft.AspNetCore.Identity.SignInManager<Microsoft.AspNetCore.Identity.IdentityUser> signInManager;
+<!DOCTYPE html>
 <html>
 <head>
     <meta charset="utf-8" />
@@ -34,7 +41,16 @@
                     <li><a asp-area="" asp-controller="Home" asp-action="About">About</a></li>
                     <li><a asp-area="" asp-controller="Home" asp-action="Contact">Contact</a></li>
                     <li><a asp-area="" asp-controller="BusinessOwner" asp-action="Index">Index</a></li>
-                    <li><a asp-area="" asp-controller="Account" asp-action="LoginApp">Login</a></li>
+
+                    @*@if (signInManager.IsSignedIn(User))
+                    {
+                        <li><a asp-area="" asp-controller="Account" asp-action="LoginApp">LogOut</a></li>
+                    }
+                    else
+                    {
+                        <li><a asp-area="" asp-controller="Account" asp-action="LoginApp">Login</a></li>
+                    }*@
+
                 </ul>
             </div>
         </div>
@@ -67,6 +83,22 @@
                 integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa">
         </script>
         <script src="~/js/site.min.js" asp-append-version="true"></script>
+        <script type="text/javascript">
+            $(document).ready(function () {
+                if (sessionStorage.getItem('accessToken') == null) {
+                    window.location.href = "/Account/LoginApp";
+                }
+
+                $('#btnLogoff').click(function () {
+                    sessionStorage.removeItem('accessToken');
+                    window.location.href = "/Account/LoginApp";
+                    alert('Hola');
+                });
+                //$('#linkClose').click(function () {
+
+                //});
+            });
+        </script>
     </environment>
 
     @RenderSection("Scripts", required: false)
