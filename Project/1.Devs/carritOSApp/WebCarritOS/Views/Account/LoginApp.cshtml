@@ -1,0 +1,35 @@
+﻿@model carritOSCore.Model.Entities.UserInfo
+@{
+    ViewData["Title"] = "LoginApp";
+}
+
+@*/**
+    * --
+    * @author Dash Tennynson
+    * @email rojas71421@gmail.com
+    * Repositorio https://github.com/Xipooo/ASPNETCoreBeginner/blob/master/50.%20Creating%20A%20Login%20Page/ContosoRTM.zip
+    * Proyecto 50 del repositorio
+    * https://www.youtube.com/watch?v=Lvh1Gy9-5Ms
+    */*@
+
+
+<div align="center">
+    <h1>LoginApp</h1>
+    <form method="post" asp-action="LoginApp" asp-controller="Account">
+        <div asp-validation-summary="All" />
+        <div>
+            <label asp-for="Email" />
+            <input asp-for="Email" />
+            <span asp-validation-for="Email" />
+        </div>
+        <div>
+            <label asp-for="Password" />
+            <input asp-for="Password" />
+            <span asp-validation-for="Password" />
+        </div>
+        <div>
+            <input type="submit" value="Log In" />
+        </div>
+    </form>
+</div>
+
