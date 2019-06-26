@@ -19,14 +19,13 @@ using System;
 namespace NUnit.TestsSelenium
 {
     [TestFixture]
-    public class TestBusinessOwner
+    public class EditBusinessOwner
     {
-        private readonly IWebDriver driver;
         public ExtentReports extent;
         public ExtentTest test;
         public ExtentHtmlReporter htmlReporter;
         public int counter = 1;
-        private BusinessOwnerPage businessOwnerPage;
+        private EditBusinessOwnerPage businessOwnerPage;
 
         [SetUp]
         public void OpenBrowser()
@@ -39,7 +38,7 @@ namespace NUnit.TestsSelenium
             extent.AttachReporter(htmlReporter);
             extent.Flush();
 
-            businessOwnerPage = new BusinessOwnerPage("chrome");
+            businessOwnerPage = new EditBusinessOwnerPage("chrome");
             businessOwnerPage.enterPage("http://localhost:8080");
             Excel.populateInCollection(@"C:\Users\USUARIO\Documents\GitHub\carritOS-WEB\Data\InsertBusinessOwner.xlsx");
 
@@ -52,6 +51,8 @@ namespace NUnit.TestsSelenium
                 businessOwnerPage.clickOnBusinessOwner();
                 for (int i = 1; i <= Excel.getTotalRowCount(); i++)
                 {
+                    string CurrentId = Excel.ReadData(i, "Id");
+                    int Id = System.Convert.ToInt32(CurrentId);
                     string currentFistName = Excel.ReadData(i, "FirstName");
                     string currentLastName = Excel.ReadData(i, "LastName");
                     string currentDni = Excel.ReadData(i, "Dni");
@@ -61,8 +62,8 @@ namespace NUnit.TestsSelenium
                     string currentCity = Excel.ReadData(i, "City");
                     string currentCountry = Excel.ReadData(i, "Country");
 
-
-                    businessOwnerPage.clickOnCreateNew();
+                    
+                    businessOwnerPage.clickOnEdit(Id);
                     businessOwnerPage.setBusinessOwner(
                         currentFistName,
                         currentLastName,
@@ -72,7 +73,7 @@ namespace NUnit.TestsSelenium
                         currentPassword,
                         currentCity,
                         currentCountry);
-                    businessOwnerPage.clickOnSave();
+                    businessOwnerPage.clickOnConfirm();
                 }
             } catch (Exception e){
                 Console.WriteLine(e.Message);

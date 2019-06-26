@@ -35,8 +35,10 @@
   <ItemGroup>
     <Compile Include="Data\Excel.cs" />
     <Compile Include="Driver\VisorDriver.cs" />
+    <Compile Include="DeleteBusinessOwner.cs" />
+    <Compile Include="Page\DeleteBusinessOwnerPage.cs" />
     <Compile Include="Page\BusinessOwnerPage.cs" />
-    <Compile Include="TestBusinessOwner.cs" />
+    <Compile Include="InsertBusinessOwner.cs" />
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="ExcelDataReader">
