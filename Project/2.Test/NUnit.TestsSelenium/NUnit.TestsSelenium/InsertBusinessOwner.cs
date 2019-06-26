@@ -1,6 +1,7 @@
 ﻿// NUnit 3 tests
 // See documentation : https://github.com/nunit/docs/wiki/NUnit-Documentation
 using AventStack.ExtentReports;
+using AventStack.ExtentReports.Gherkin.Model;
 using AventStack.ExtentReports.Reporter;
 using AventStack.ExtentReports.Reporter.Configuration;
 using NUnit.Framework;
@@ -22,7 +23,6 @@ namespace NUnit.TestsSelenium
     public class InsertBusinessOwner
     {
         public ExtentReports extent;
-        public ExtentTest test;
         public ExtentHtmlReporter htmlReporter;
         public int counter = 1;
         private BusinessOwnerPage businessOwnerPage;
@@ -30,27 +30,32 @@ namespace NUnit.TestsSelenium
         [SetUp]
         public void OpenBrowser()
         {
-            htmlReporter = new ExtentHtmlReporter(@".\Reports\reportDiego.html");
+            htmlReporter = new ExtentHtmlReporter(@".\Reports\Insert\reportDiego.html");
             htmlReporter.Config.Theme = Theme.Dark;
             htmlReporter.Config.DocumentTitle = "Test Report | Diego Alosilla";
             htmlReporter.Config.ReportName = "Test Report | Diego Alosilla";
             extent = new ExtentReports();
             extent.AttachReporter(htmlReporter);
-            extent.Flush();
+           
 
             businessOwnerPage = new BusinessOwnerPage("chrome");
             businessOwnerPage.enterPage("http://localhost:8080");
-            Excel.populateInCollection(@"C:\Users\USUARIO\Documents\GitHub\carritOS-WEB\Data\InsertBusinessOwner.xlsx");
+            Excel.populateInCollection(@"C:\Users\USUARIO\Documents\GitHub\carritOS-WEB\Data\DeleteBusinessOwner.xlsx");
 
         }
 
         [Test]
-        public void TestApp()
+        public void Insert()
         {
             try {
+                
                 businessOwnerPage.clickOnBusinessOwner();
                 for (int i = 1; i <= Excel.getTotalRowCount(); i++)
                 {
+                    var test = extent.CreateTest("Insert BusinessOwner Test" + i);
+                    var features = extent.CreateTest<Feature>("Insert BusinessOwner Feature"+1);
+                    var scenario = features.CreateNode<Scenario>("Insert BusinessOwner Scenario"+1);
+
                     string currentFistName = Excel.ReadData(i, "FirstName");
                     string currentLastName = Excel.ReadData(i, "LastName");
                     string currentDni = Excel.ReadData(i, "Dni");
@@ -83,6 +88,7 @@ namespace NUnit.TestsSelenium
         [TearDown]
         public void CloseBrowser()
         {
+            extent.Flush();
             businessOwnerPage.quitPage();
         }
     }

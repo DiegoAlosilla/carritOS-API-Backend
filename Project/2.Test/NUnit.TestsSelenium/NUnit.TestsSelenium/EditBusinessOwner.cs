@@ -1,6 +1,7 @@
 ﻿// NUnit 3 tests
 // See documentation : https://github.com/nunit/docs/wiki/NUnit-Documentation
 using AventStack.ExtentReports;
+using AventStack.ExtentReports.Gherkin.Model;
 using AventStack.ExtentReports.Reporter;
 using AventStack.ExtentReports.Reporter.Configuration;
 using NUnit.Framework;
@@ -30,7 +31,7 @@ namespace NUnit.TestsSelenium
         [SetUp]
         public void OpenBrowser()
         {
-            htmlReporter = new ExtentHtmlReporter(@".\Reports\reportDiego.html");
+            htmlReporter = new ExtentHtmlReporter(@".\Reports\Edit\reportDiego.html");
             htmlReporter.Config.Theme = Theme.Dark;
             htmlReporter.Config.DocumentTitle = "Test Report | Diego Alosilla";
             htmlReporter.Config.ReportName = "Test Report | Diego Alosilla";
@@ -45,12 +46,17 @@ namespace NUnit.TestsSelenium
         }
 
         [Test]
-        public void TestApp()
+        public void Edit()
         {
             try {
+                test.Extent.CreateTest("Edit BusinessOwner");
                 businessOwnerPage.clickOnBusinessOwner();
                 for (int i = 1; i <= Excel.getTotalRowCount(); i++)
                 {
+                    var test = extent.CreateTest("Insert BusinessOwner Test" + i);
+                    var features = extent.CreateTest<Feature>("Insert BusinessOwner Feature" + 1);
+                    var scenario = features.CreateNode<Scenario>("Insert BusinessOwner Scenario" + 1);
+
                     string CurrentId = Excel.ReadData(i, "Id");
                     int Id = System.Convert.ToInt32(CurrentId);
                     string currentFistName = Excel.ReadData(i, "FirstName");

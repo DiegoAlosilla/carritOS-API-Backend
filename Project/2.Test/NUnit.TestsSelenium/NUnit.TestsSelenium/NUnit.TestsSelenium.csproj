@@ -36,6 +36,8 @@
     <Compile Include="Data\Excel.cs" />
     <Compile Include="Driver\VisorDriver.cs" />
     <Compile Include="DeleteBusinessOwner.cs" />
+    <Compile Include="EditBusinessOwner.cs" />
+    <Compile Include="Page\EditBusinessOwnerPage.cs" />
     <Compile Include="Page\DeleteBusinessOwnerPage.cs" />
     <Compile Include="Page\BusinessOwnerPage.cs" />
     <Compile Include="InsertBusinessOwner.cs" />
