@@ -62,8 +62,11 @@ namespace WebCarritOS.Controllers
 
             if (result.IsSuccessStatusCode)
             {
+                ViewBag.Message = "the business owner registered correctly";
                 return RedirectToAction("Index");
+
             }
+            ViewBag.Message = "incorrect fields or data already registered";
             return View();
         }
 
