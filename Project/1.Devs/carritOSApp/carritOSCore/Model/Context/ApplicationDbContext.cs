@@ -16,5 +16,11 @@ namespace carritOSCore.Model.Context
         }
 
         public DbSet<BusinessOwner> BusinessOwners { get; set; }
+        public DbSet<Consumer> Consumers { get; set; }
+        public DbSet<Contract> Contracts { get; set; }
+        public DbSet<FoodTruck> FoodTrucks { get; set; }
+        public DbSet<Review> Reviews { get; set; }
+        public DbSet<Sale> Sales { get; set; }
+        public DbSet<Seller> Sellers { get; set; }
     }
 }
