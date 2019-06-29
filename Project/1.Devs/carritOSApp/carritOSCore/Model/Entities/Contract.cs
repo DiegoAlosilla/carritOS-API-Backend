@@ -1,7 +1,11 @@
 ﻿using System;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
-
+/**
+ * --
+ * @author Juan Diego Alosilla
+ * @email diegoalosillagmail.com
+ */
 namespace carritOSCore.Model.Entities
 {
     public class Contract
